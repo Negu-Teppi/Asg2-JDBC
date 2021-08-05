@@ -27,15 +27,15 @@
     <table>
         <tr>
             <td>Name</td>
-            <td><input type="text" name="name"/></td>
+            <td><input type="text" name="name" value="${sessionScope.name}"/></td>
         </tr>
         <tr>
             <td>Salary</td>
-            <td><input type="text" name="salary"    "/></td>
+            <td><input type="text" name="salary"  value="${sessionScope.salary}"/></td>
         </tr>
         <tr>
             <td>Department</td>
-            <td><input type="text" name="department"/></td>
+            <td><input type="text" name="department" value="${sessionScope.departmentName}"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="Search"/></td>
@@ -54,7 +54,7 @@
         <tr>
             <td>${employee.id}</td>
             <td>${employee.name}</td>
-            <td>${employee.getSalaryFormatted()}</td>
+            <td>${String.format("%.0f", employee.salary)}</td>
             <td style="width: 20px">${employee.getDepartmentName()}</td>
             <td><a href="./del?id=${employee.id}">del</a></td>
             <td><a href="./edit?id=${employee.id}">edit</a></td>

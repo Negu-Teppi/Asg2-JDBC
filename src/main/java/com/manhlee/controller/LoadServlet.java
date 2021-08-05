@@ -19,15 +19,20 @@ public class LoadServlet extends HttpServlet {
         employeeList= EmployeeDao.findAll();
         request.setAttribute("employeeList", employeeList);
         request.getRequestDispatcher("/index.jsp").forward(request,response);*/
+        HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String salaryStr = request.getParameter("salary");
         double salary = 0;
         if(salaryStr!=null && salaryStr.length()>0){
             salary= Double.parseDouble(salaryStr);
         }
+
         String departmentName = request.getParameter("department");
         List<? extends Department> list = new ArrayList<>();
         list = EmployeeDao.findAllAndFindByCondition(name, salary, departmentName);
+        session.setAttribute("name",name);
+        session.setAttribute("salary",salaryStr);
+        session.setAttribute("departmentName",departmentName);
         request.setAttribute("employeeList", list);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
