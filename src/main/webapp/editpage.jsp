@@ -25,7 +25,7 @@
             <tr>
                 <td>Salary</td>
                 <td>
-                    <input type="text" name="salary" value="${employee.getSalaryFormatted()}"></td>
+                    <input type="text" name="salary" value="${String.format("%.0f",employee.salary)}"></td>
             </tr>
             <tr>
                 <td>Deparment Name</td>
