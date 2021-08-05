@@ -25,12 +25,12 @@
             <tr>
                 <td>Salary</td>
                 <td>
-                    <input type="text" name="salary" value="${employee.getSalaryFormatted()}"></td>
+                    <input type="text" name="salary" value="${String.format("%.0f",employee.salary)}"></td>
             </tr>
             <tr>
                 <td>Deparment Name</td>
                 <td>
-                    <select id="departmentName" name="departmentName">
+                    <select name="departmentName">
                         <c:forEach var="department" items="${departmentList}">
                         <option value="${department.departmentName}" ${department.departmentName==employee.getDepartmentName()? "selected":""}>
                                 ${department.departmentName}</option>
