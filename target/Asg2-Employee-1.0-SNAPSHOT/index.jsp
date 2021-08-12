@@ -55,7 +55,7 @@
             <td>${employee.id}</td>
             <td>${employee.name}</td>
             <td>${String.format("%.0f", employee.salary)}</td>
-            <td style="width: 20px">${employee.getDepartmentName()}</td>
+            <td style="width: 20px">${employee.department.getDepartmentName()}</td>
             <td><a href="./del?id=${employee.id}">del</a></td>
             <td><a href="./edit?id=${employee.id}">edit</a></td>
         </tr>

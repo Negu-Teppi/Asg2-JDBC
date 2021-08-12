@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Asg2-Employee">
+    <Resource name="jdbc/MyDB"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/jv44"
+              username="root"
+              password="!sml123A@z"
+              maxActive="100"
+              maxIdle="20"
+              minIdle="5"
+              maxWait="10000"/>
+</Context>

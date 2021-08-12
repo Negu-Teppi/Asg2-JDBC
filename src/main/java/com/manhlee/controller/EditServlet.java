@@ -35,9 +35,8 @@ public class EditServlet extends HttpServlet {
         if(salaryStr!=null && salaryStr.length()>0){
             salary= Double.parseDouble(salaryStr);
         }
-        String departmentName = request.getParameter("departmentName");
-        Employee employee = new Employee(id, name,salary);
-        EmployeeDao.editEmployee(employee,departmentName);
+        String departmentName = request.getParameter("departmentName");;
+        EmployeeDao.editEmployee(id,name,salary,departmentName);
         response.sendRedirect("load");
     }
 }

@@ -1,8 +1,8 @@
 package com.manhlee.controller;
 
 import com.manhlee.dao.EmployeeDao;
-import com.manhlee.model.Department;
 import com.manhlee.model.Employee;
+import com.manhlee.model.EmployeeEntity;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -15,10 +15,7 @@ import java.util.List;
 public class LoadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       /* List<? extends Department> employeeList = new ArrayList<>();
-        employeeList= EmployeeDao.findAll();
-        request.setAttribute("employeeList", employeeList);
-        request.getRequestDispatcher("/index.jsp").forward(request,response);*/
+
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String salaryStr = request.getParameter("salary");
@@ -26,14 +23,17 @@ public class LoadServlet extends HttpServlet {
         if(salaryStr!=null && salaryStr.length()>0){
             salary= Double.parseDouble(salaryStr);
         }
-
         String departmentName = request.getParameter("department");
-        List<? extends Department> list = new ArrayList<>();
-        list = EmployeeDao.findAllAndFindByCondition(name, salary, departmentName);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList = EmployeeDao.findAllAndFindByCondition(name, salary, departmentName);
+//        List<EmployeeEntity> employeeEntityList =new ArrayList<>();
+//        employeeEntityList = EmployeeDao.findAllEntity();
+
         session.setAttribute("name",name);
         session.setAttribute("salary",salaryStr);
         session.setAttribute("departmentName",departmentName);
-        request.setAttribute("employeeList", list);
+        request.setAttribute("employeeList", employeeList);
+//        request.setAttribute("employeeList", employeeEntityList);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

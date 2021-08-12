@@ -28,15 +28,33 @@ public class DepartmentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            if(connection!=null){
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
             pool.freeConnection(connection);
         }
         return departmentList;
+    }
+
+    public static Department findDepartmentById(int id){
+        Department department = new Department();
+        String query = "SELECT * FROM DEPARTMENT WHERE id=?";
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+
+        try(
+                PreparedStatement pstmt = connection.prepareStatement(query);
+
+                ){
+            pstmt.setInt(1, id);
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()){
+                department.setId(resultSet.getInt("id"));
+                department.setDepartmentName(resultSet.getString("name"));
+            }
+            resultSet.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            pool.freeConnection(connection);
+        }
+        return department;
     }
 }

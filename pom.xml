@@ -11,6 +11,9 @@
     <packaging>war</packaging>
 
     <properties>
+        <hibernate-entitymanager.version>5.5.5.Final</hibernate-entitymanager.version>
+        <hibernate-core.version>5.5.6.Final</hibernate-core.version>
+        <named-parameters.version>1.1</named-parameters.version>
         <mysql.driver.version>8.0.26</mysql.driver.version>
         <jstl.version>1.2</jstl.version>
         <servlet.api.version>4.0.1</servlet.api.version>
@@ -20,6 +23,21 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-entitymanager.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.axiomalaska</groupId>
+            <artifactId>jdbc-named-parameters</artifactId>
+            <version>${named-parameters.version}</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

@@ -32,7 +32,7 @@
                 <td>
                     <select name="departmentName">
                         <c:forEach var="department" items="${departmentList}">
-                        <option value="${department.departmentName}" ${department.departmentName==employee.getDepartmentName()? "selected":""}>
+                        <option value="${department.departmentName}" ${department.departmentName==employee.department.getDepartmentName()? "selected":""}>
                                 ${department.departmentName}</option>
                         </c:forEach>
                         </select>
